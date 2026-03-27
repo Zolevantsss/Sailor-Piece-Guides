@@ -59,25 +59,25 @@ const WikiArticle = ({ title }: WikiArticleProps) => {
 
     return (
         <article className="max-w-4xl">
-            <header className="mb-8 pb-6 border-b border-wiki-border">
-                <h1 className="text-3xl font-bold text-wiki-text mb-3">{title}</h1>
-                <div className="text-wiki-textMuted text-lg leading-relaxed">{renderFormattedText(article.content)}</div>
+            <header className="mb-6 md:mb-8 pb-4 md:pb-6 border-b border-wiki-border">
+                <h1 className="text-2xl md:text-3xl font-bold text-wiki-text mb-3">{title}</h1>
+                <div className="text-wiki-textMuted text-base md:text-lg leading-relaxed">{renderFormattedText(article.content)}</div>
             </header>
 
-            <div className="space-y-12">
+            <div className="space-y-8 md:space-y-12">
                 {article.sections.map((section, index) => (
                     <section key={index} className="group">
-                        <h2 className="text-2xl font-bold text-wiki-blueGlow mb-6 flex items-center gap-2 group-hover:translate-x-1 transition-transform">
+                        <h2 className="text-xl md:text-2xl font-bold text-wiki-blueGlow mb-4 md:mb-6 flex items-center gap-2 group-hover:translate-x-1 transition-transform">
                             {section.heading}
                         </h2>
                         {section.image && (
-                            <div className="mb-6 rounded-2xl overflow-hidden border border-wiki-border/50 shadow-2xl bg-wiki-darkHover ring-1 ring-white/10">
+                            <div className="mb-4 md:mb-6 rounded-xl md:rounded-2xl overflow-hidden border border-wiki-border/50 shadow-2xl bg-wiki-darkHover ring-1 ring-white/10">
                                 {section.mediaType === 'video' ? (
                                     <video
                                         src={section.image}
                                         controls
-                                        className={`${section.imageSize === 'small' ? 'w-1/3' :
-                                            section.imageSize === 'medium' ? 'w-1/2' :
+                                        className={`${section.imageSize === 'small' ? 'w-1/2 sm:w-1/3' :
+                                            section.imageSize === 'medium' ? 'w-full sm:w-1/2' :
                                                 'w-full'
                                             } h-auto object-cover`}
                                     />
@@ -85,15 +85,15 @@ const WikiArticle = ({ title }: WikiArticleProps) => {
                                     <img
                                         src={section.image}
                                         alt={section.heading}
-                                        className={`${section.imageSize === 'small' ? 'w-1/3' :
-                                            section.imageSize === 'medium' ? 'w-1/2' :
+                                        className={`${section.imageSize === 'small' ? 'w-1/2 sm:w-1/3' :
+                                            section.imageSize === 'medium' ? 'w-full sm:w-1/2' :
                                                 'w-full'
                                             } h-auto object-cover hover:scale-[1.02] transition-transform duration-500`}
                                     />
                                 )}
                             </div>
                         )}
-                        <div className="text-wiki-text leading-relaxed bg-wiki-card/60 p-8 rounded-2xl border border-wiki-border/40 shadow-inner backdrop-blur-sm">
+                        <div className="text-wiki-text text-sm md:text-base leading-relaxed bg-wiki-card/60 p-4 md:p-8 rounded-xl md:rounded-2xl border border-wiki-border/40 shadow-inner backdrop-blur-sm">
                             {renderFormattedText(section.text)}
                         </div>
                     </section>

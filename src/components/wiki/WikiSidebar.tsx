@@ -4,9 +4,10 @@ import logo from '../../assets/logo.png';
 interface WikiSidebarProps {
     onNavigate: (article: string) => void;
     activeArticle: string;
+    onClose?: () => void;
 }
 
-const WikiSidebar = ({ onNavigate, activeArticle }: WikiSidebarProps) => {
+const WikiSidebar = ({ onNavigate, activeArticle, onClose }: WikiSidebarProps) => {
     const [openMenus, setOpenMenus] = useState<string[]>(['Puzzle Location', 'Weapons']);
 
     const toggleMenu = (title: string) => {
@@ -56,15 +57,27 @@ const WikiSidebar = ({ onNavigate, activeArticle }: WikiSidebarProps) => {
     return (
         <aside className="w-64 bg-wiki-dark border-r border-wiki-border flex flex-col h-full shrink-0">
             <div className="p-4 border-b border-wiki-border">
-                <div className="flex items-center gap-3">
-                    <img 
-                        src={logo} 
-                        alt="Hexenzirkel Logo" 
-                        className="w-10 h-10 object-contain mix-blend-screen" 
-                    />
-                    <h2 className="text-xl font-bold text-wiki-blueGlow">
-                        Hexenzirkel
-                    </h2>
+                <div className="flex items-center justify-between gap-3">
+                    <div className="flex items-center gap-3">
+                        <img 
+                            src={logo} 
+                            alt="Hexenzirkel Logo" 
+                            className="w-10 h-10 object-contain mix-blend-screen" 
+                        />
+                        <h2 className="text-xl font-bold text-wiki-blueGlow">
+                            Hexenzirkel
+                        </h2>
+                    </div>
+                    {onClose && (
+                        <button 
+                            onClick={onClose}
+                            className="md:hidden text-wiki-textMuted hover:text-white p-1"
+                        >
+                            <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                            </svg>
+                        </button>
+                    )}
                 </div>
             </div>
 
