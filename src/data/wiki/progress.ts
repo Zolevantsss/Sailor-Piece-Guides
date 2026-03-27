@@ -86,7 +86,7 @@ export const progressArticle: ArticleData = {
         },
         {
             heading: '✨ AFTER YOU GET ANOS',
-            text: 'After you get Anos, you can now progress to Aizen V2. Continue your journey with enhanced power and new abilities!'
+            text: 'After you get Anos, you can now progress to Aizen V2.'
         }
     ]
 };
