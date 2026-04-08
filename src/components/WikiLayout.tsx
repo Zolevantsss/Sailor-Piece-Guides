@@ -4,7 +4,7 @@ import WikiSearch from './wiki/WikiSearch';
 import WikiArticle from './wiki/WikiArticle';
 
 const WikiLayout = () => {
-    const [activeArticle, setActiveArticle] = useState('Ascension');
+    const [activeArticle, setActiveArticle] = useState('All Haki Location');
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
     const handleNavigate = (article: string) => {
@@ -20,16 +20,16 @@ const WikiLayout = () => {
                 transition-transform duration-300 ease-in-out
                 ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full md:translate-x-0'}
             `}>
-                <WikiSidebar 
-                    onNavigate={handleNavigate} 
-                    activeArticle={activeArticle} 
-                    onClose={() => setIsSidebarOpen(false)} 
+                <WikiSidebar
+                    onNavigate={handleNavigate}
+                    activeArticle={activeArticle}
+                    onClose={() => setIsSidebarOpen(false)}
                 />
             </div>
 
             {/* Backdrop for mobile */}
             {isSidebarOpen && (
-                <div 
+                <div
                     className="fixed inset-0 bg-black/60 backdrop-blur-sm z-40 md:hidden"
                     onClick={() => setIsSidebarOpen(false)}
                 />
@@ -38,7 +38,7 @@ const WikiLayout = () => {
             <div className="flex-1 flex flex-col overflow-hidden min-w-0">
                 <header className="h-16 bg-wiki-card border-b border-wiki-border flex items-center justify-between px-4 md:px-6">
                     <div className="flex items-center gap-2 md:gap-4 overflow-hidden">
-                        <button 
+                        <button
                             onClick={() => setIsSidebarOpen(true)}
                             className="md:hidden text-wiki-textMuted hover:text-wiki-blueGlow transition-colors p-2"
                         >
@@ -55,7 +55,7 @@ const WikiLayout = () => {
 
                     <div className="flex items-center gap-2 md:gap-4 shrink-0">
                         <div className="hidden sm:block">
-                            <WikiSearch />
+                            <WikiSearch onNavigate={handleNavigate} />
                         </div>
                         <button className="sm:hidden text-wiki-textMuted p-2">
                             <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
