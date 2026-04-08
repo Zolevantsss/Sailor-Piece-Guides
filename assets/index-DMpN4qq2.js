@@ -242,7 +242,7 @@ Focus on grouping Quincy mobs for efficient sigil drops. This is the most time-c
 • **Gems:** 40,000`,we).addSimpleSection(`❄️ F Move Mastery`,`To unlock the final mastery for Esdeath, you must meet these additional requirements:
 
 • **Clan Mastery:** Obtain the **Frostbane Clan** through rerolls.
-• **Material Grind:** Collect **85 Frost Relics**.`,Te),"Kokushibo (Upper Moon One)":new h(`The Kokushibo spec is based on Moon Breathing, offering rapid and lethal strikes with wide area-of-effect coverage. It can be found in **Boss Island**`).addSimpleSection(`📜 Unlock Requirements`,`Meet these elite requirements to unlock the Kokushibo spec:
+• **Material Grind:** Collect **Frostbane Clan**, **2 Ice Core**, **10 Frozen Brand,**85 Frost Relics**.`,Te),"Kokushibo (Upper Moon One)":new h(`The Kokushibo spec is based on Moon Breathing, offering rapid and lethal strikes with wide area-of-effect coverage. It can be found in **Boss Island**`).addSimpleSection(`📜 Unlock Requirements`,`Meet these elite requirements to unlock the Kokushibo spec:
 
 • **Title:** Six Eyed Demon
 • **Items:** 1x Moon Crest, 4x Crescent Shard, 9x Lunar Essence, 16x Demon Remnant, 25x Upper Seal
