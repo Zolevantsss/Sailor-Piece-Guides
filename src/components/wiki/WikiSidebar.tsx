@@ -41,7 +41,10 @@ const WikiSidebar = ({ onNavigate, activeArticle, onClose }: WikiSidebarProps) =
                     title: 'Weapons',
                     subItems: [
                         'Atomic Sword',
-                        'Abyssal Empress (Acheron)'
+                        'Abyssal Empress (Acheron)',
+                        'Esdeath (General of Ice)',
+                        'Kokushibo (Upper Moon One)',
+                        'Madara (The Ghost of Uchiha)'
                     ]
                 },
                 'Rerolls',

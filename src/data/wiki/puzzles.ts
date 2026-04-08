@@ -1,3 +1,4 @@
+import { WikiArticle } from '../../types/wiki';
 import type { ArticlesRecord } from '../../types/wiki';
 import slimePiece1 from '../../assets/slimepuzzle/piece1.png';
 import slimePiece2 from '../../assets/slimepuzzle/piece2.png';
@@ -23,165 +24,104 @@ import hogquestPiece5 from '../../assets/hogquest/piece5.mov';
 import hogquestPiece6 from '../../assets/hogquest/piece6.mov';
 
 export const puzzleArticles: ArticlesRecord = {
-    'Slime Puzzle': {
-        content: 'Find 7 Slime Pieces around the map! The quest NPC is located at Slime Island. Collect all pieces to complete the slime puzzle quest.',
-        sections: [
-            {
-                heading: '📍 Slime Piece Locations',
-                text: 'Locate all 7 pieces to unlock the secrets of the Slime Island.',
-            },
-            {
-                heading: 'Slime Piece 1 - Desert Island',
-                text: '**Location:** Under a dinosaur',
-                image: slimePiece1
-            },
-            {
-                heading: 'Slime Piece 2 - Snow Island',
-                text: '**Location:** Behind a tree',
-                image: slimePiece2
-            },
-            {
-                heading: 'Slime Piece 3 - Starter Island',
-                text: '**Location:** On a tree',
-                image: slimePiece3
-            },
-            {
-                heading: 'Slime Piece 4 - Jungle Island',
-                text: '**Location:** On top of a hut/outpost',
-                image: slimePiece4
-            },
-            {
-                heading: 'Slime Piece 5 - Shibuya',
-                text: '**Location:** Near Gojo',
-                image: slimePiece5
-            },
-            {
-                heading: 'Slime Piece 6 - Hueco Mundo',
-                text: '**Location:** In between a building',
-                image: slimePiece6
-            },
-            {
-                heading: 'Slime Piece 7 - Shinjuku',
-                text: '**Location:** Near Sukuna V2 Spawn Arena',
-                image: slimePiece7
-            },
-        ]
-    },
-    'Demonite Puzzle': {
-        content: 'Find 2 Demonite pieces around the world! These rare puzzle pieces are part of the Demonite Core crafting requirements.',
-        sections: [
-            {
-                heading: '🧩 Piece Locations',
-                text: 'These pieces are essential for progressing through the Anos spec questline.',
-            },
-            {
-                heading: 'Demonite Piece 1',
-                text: 'First demonite puzzle piece. Required for Demonite Core crafting.',
-                image: demonitePiece1
-            },
-            {
-                heading: 'Demonite Piece 2',
-                text: 'Second demonite puzzle piece. Required for Demonite Core crafting.',
-                image: demonitePiece2
-            },
-        ]
-    },
-    'Hogyoku Quest Puzzle': {
-        content: 'The Hogyoku Quest is a multi-stage challenge requiring fragments from across the world. Start your journey in Hueco Mundo.',
-        sections: [
-            {
-                heading: '👤 Starting the Quest',
-                text: 'The NPC to start the Hogyoku quest is located at **Hueco Mundo**, near the Aizen sword NPC (not the mastery one).',
-                image: hogquestNpc
-            },
-            {
-                heading: '💎 Fragment Locations',
-                text: '**Collect all 6 Fragments:**\n• **1st Fragment:** Snow Island\n• **2nd Fragment:** Shibuya\n• **3rd Fragment:** Hueco Mundo\n• **4th Fragment:** Shinjuku\n• **5th Fragment:** Slime\n• **6th Fragment:** Judgement (right side of island)',
-            },
-            {
-                heading: '🎥 Video Guide: Piece 1',
-                text: 'Visual guide for the first Hogyoku fragment.',
-                image: hogquestPiece1,
-                mediaType: 'video'
-            },
-            {
-                heading: '🎥 Video Guide: Piece 2',
-                text: 'Visual guide for the second Hogyoku fragment.',
-                image: hogquestPiece2,
-                mediaType: 'video'
-            },
-            {
-                heading: '🎥 Video Guide: Piece 3',
-                text: 'Visual guide for the third Hogyoku fragment.',
-                image: hogquestPiece3,
-                mediaType: 'video'
-            },
-            {
-                heading: '🎥 Video Guide: Piece 4',
-                text: 'Visual guide for the fourth Hogyoku fragment.',
-                image: hogquestPiece4,
-                mediaType: 'video'
-            },
-            {
-                heading: '🎥 Video Guide: Piece 5',
-                text: 'Visual guide for the fifth Hogyoku fragment.',
-                image: hogquestPiece5,
-                mediaType: 'video'
-            },
-            {
-                heading: '🎥 Video Guide: Piece 6',
-                text: 'Visual guide for the sixth Hogyoku fragment.',
-                image: hogquestPiece6,
-                mediaType: 'video'
-            }
-        ]
-    },
-    'Ancient Puzzle': {
-        content: `Located on **Dungeon Island**, which is next to Boss Island and Shibuya City. This puzzle yields powerful rewards for those who can complete the trials.`,
-        sections: [
-            {
-                heading: '🏛️ Entering the Temple',
-                text: `**Quest Giver:** The quest can be found once you go into the room. Talk to the NPC and he will give you the quest.`,
-            },
-            {
-                heading: '📜 Quest Trials',
-                text: `To complete the ancient puzzle, you must fulfill two primary objectives:\n\n• **Quest 1:** Look for 6x Ancient Artifacts\n• **Quest 2:** Kill 25x Bosses`,
-            },
-            {
-                heading: 'Ancient Piece 1 - Starter Island',
-                text: '**Location:** Found on Starter Island.',
-                image: ancientPiece1
-            },
-            {
-                heading: 'Ancient Piece 2 - Jungle Island',
-                text: '**Location:** Found on Jungle Island.',
-                image: ancientPiece2
-            },
-            {
-                heading: 'Ancient Piece 3 - Desert Island',
-                text: '**Location:** Found on Desert Island.',
-                image: ancientPiece3
-            },
-            {
-                heading: 'Ancient Piece 4 - Snow Island',
-                text: '**Location:** Found on Snow Island.',
-                image: ancientPiece4
-            },
-            {
-                heading: 'Ancient Piece 5 - Shibuya Island',
-                text: '**Location:** Found on Shibuya Island.',
-                image: ancientPiece5,
-                mediaType: 'video'
-            },
-            {
-                heading: 'Ancient Piece 6 - Hueco Mundo',
-                text: '**Location:** Found on Hueco Mundo.',
-                image: ancientPiece6
-            },
-            {
-                heading: '⚔️ Final Trial',
-                text: 'After collecting all 6 artifacts, you must **Kill 25 Bosses** to complete the quest and claim your rewards.',
-            }
-        ]
-    },
+    'Slime Puzzle': new WikiArticle(
+        'Find 7 Slime Pieces around the map! The quest NPC is located at Slime Island. Collect all pieces to complete the slime puzzle quest.'
+    )
+    .addSimpleSection(
+        '📍 Slime Piece Locations',
+        'Locate all 7 pieces to unlock the secrets of the Slime Island.'
+    )
+    .addSimpleSection('Slime Piece 1 - Desert Island', '**Location:** Under a dinosaur', slimePiece1)
+    .addSimpleSection('Slime Piece 2 - Snow Island', '**Location:** Behind a tree', slimePiece2)
+    .addSimpleSection('Slime Piece 3 - Starter Island', '**Location:** On a tree', slimePiece3)
+    .addSimpleSection('Slime Piece 4 - Jungle Island', '**Location:** On top of a hut/outpost', slimePiece4)
+    .addSimpleSection('Slime Piece 5 - Shibuya', '**Location:** Near Gojo', slimePiece5)
+    .addSimpleSection('Slime Piece 6 - Hueco Mundo', '**Location:** In between a building', slimePiece6)
+    .addSimpleSection('Slime Piece 7 - Shinjuku', '**Location:** Near Sukuna V2 Spawn Arena', slimePiece7),
+
+    'Demonite Puzzle': new WikiArticle(
+        'Find 2 Demonite pieces around the world! These rare puzzle pieces are part of the Demonite Core crafting requirements.'
+    )
+    .addSimpleSection(
+        '🧩 Piece Locations',
+        'These pieces are essential for progressing through the Anos spec questline.'
+    )
+    .addSimpleSection('Demonite Piece 1', 'First demonite puzzle piece. Required for Demonite Core crafting.', demonitePiece1)
+    .addSimpleSection('Demonite Piece 2', 'Second demonite puzzle piece. Required for Demonite Core crafting.', demonitePiece2),
+
+    'Hogyoku Quest Puzzle': new WikiArticle(
+        'The Hogyoku Quest is a multi-stage challenge requiring fragments from across the world. Start your journey in Hueco Mundo.'
+    )
+    .addSimpleSection(
+        '👤 Starting the Quest',
+        'The NPC to start the Hogyoku quest is located at **Hueco Mundo**, near the Aizen sword NPC (not the mastery one).',
+        hogquestNpc
+    )
+    .addSimpleSection(
+        '💎 Fragment Locations',
+        '**Collect all 6 Fragments:**\n• **1st Fragment:** Snow Island\n• **2nd Fragment:** Shibuya\n• **3rd Fragment:** Hueco Mundo\n• **4th Fragment:** Shinjuku\n• **5th Fragment:** Slime\n• **6th Fragment:** Judgement (right side of island)'
+    )
+    .addSection({
+        heading: '🎥 Video Guide: Piece 1',
+        text: 'Visual guide for the first Hogyoku fragment.',
+        image: hogquestPiece1,
+        mediaType: 'video'
+    })
+    .addSection({
+        heading: '🎥 Video Guide: Piece 2',
+        text: 'Visual guide for the second Hogyoku fragment.',
+        image: hogquestPiece2,
+        mediaType: 'video'
+    })
+    .addSection({
+        heading: '🎥 Video Guide: Piece 3',
+        text: 'Visual guide for the third Hogyoku fragment.',
+        image: hogquestPiece3,
+        mediaType: 'video'
+    })
+    .addSection({
+        heading: '🎥 Video Guide: Piece 4',
+        text: 'Visual guide for the fourth Hogyoku fragment.',
+        image: hogquestPiece4,
+        mediaType: 'video'
+    })
+    .addSection({
+        heading: '🎥 Video Guide: Piece 5',
+        text: 'Visual guide for the fifth Hogyoku fragment.',
+        image: hogquestPiece5,
+        mediaType: 'video'
+    })
+    .addSection({
+        heading: '🎥 Video Guide: Piece 6',
+        text: 'Visual guide for the sixth Hogyoku fragment.',
+        image: hogquestPiece6,
+        mediaType: 'video'
+    }),
+
+    'Ancient Puzzle': new WikiArticle(
+        `Located on **Dungeon Island**, which is next to Boss Island and Shibuya City. This puzzle yields powerful rewards for those who can complete the trials.`
+    )
+    .addSimpleSection(
+        '🏛️ Entering the Temple',
+        `**Quest Giver:** The quest can be found once you go into the room. Talk to the NPC and he will give you the quest.`
+    )
+    .addSimpleSection(
+        '📜 Quest Trials',
+        `To complete the ancient puzzle, you must fulfill two primary objectives:\n\n• **Quest 1:** Look for 6x Ancient Artifacts\n• **Quest 2:** Kill 25x Bosses`
+    )
+    .addSimpleSection('Ancient Piece 1 - Starter Island', '**Location:** Found on Starter Island.', ancientPiece1)
+    .addSimpleSection('Ancient Piece 2 - Jungle Island', '**Location:** Found on Jungle Island.', ancientPiece2)
+    .addSimpleSection('Ancient Piece 3 - Desert Island', '**Location:** Found on Desert Island.', ancientPiece3)
+    .addSimpleSection('Ancient Piece 4 - Snow Island', '**Location:** Found on Snow Island.', ancientPiece4)
+    .addSection({
+        heading: 'Ancient Piece 5 - Shibuya Island',
+        text: '**Location:** Found on Shibuya Island.',
+        image: ancientPiece5,
+        mediaType: 'video'
+    })
+    .addSimpleSection('Ancient Piece 6 - Hueco Mundo', '**Location:** Found on Hueco Mundo.', ancientPiece6)
+    .addSimpleSection(
+        '⚔️ Final Trial',
+        'After collecting all 6 artifacts, you must **Kill 25 Bosses** to complete the quest and claim your rewards.'
+    ),
 };
