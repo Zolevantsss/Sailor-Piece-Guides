@@ -1,14 +1,35 @@
+import { useEffect, useRef } from 'react';
 import { allArticles } from '../../data/wiki';
 
 interface WikiArticleProps {
     title: string;
+    activeSection?: string | null;
 }
 
-const WikiArticle = ({ title }: WikiArticleProps) => {
+const WikiArticle = ({ title, activeSection }: WikiArticleProps) => {
     const article = allArticles[title] || {
         content: 'This article is currently being written. Check back soon for updates.',
         sections: []
     };
+    const sectionRefs = useRef<{ [key: string]: HTMLElement | null }>({});
+
+    useEffect(() => {
+        if (activeSection && sectionRefs.current[activeSection]) {
+            sectionRefs.current[activeSection]?.scrollIntoView({ 
+                behavior: 'smooth', 
+                block: 'start' 
+            });
+            
+            // Add a temporary highlight effect
+            const el = sectionRefs.current[activeSection];
+            if (el) {
+                el.classList.add('ring-2', 'ring-wiki-blueGlow', 'ring-offset-4', 'ring-offset-wiki-dark', 'rounded-lg');
+                setTimeout(() => {
+                    el.classList.remove('ring-2', 'ring-wiki-blueGlow', 'ring-offset-4', 'ring-offset-wiki-dark', 'rounded-lg');
+                }, 2000);
+            }
+        }
+    }, [activeSection, title]);
 
     const renderFormattedText = (text: string) => {
         return text.split('\n').map((line, lineIdx) => {
@@ -58,7 +79,7 @@ const WikiArticle = ({ title }: WikiArticleProps) => {
     };
 
     return (
-        <article className="max-w-4xl">
+        <article className="max-w-4xl pb-20">
             <header className="mb-6 md:mb-8 pb-4 md:pb-6 border-b border-wiki-border">
                 <h1 className="text-2xl md:text-3xl font-bold text-wiki-text mb-3">{title}</h1>
                 <div className="text-wiki-textMuted text-base md:text-lg leading-relaxed">{renderFormattedText(article.content)}</div>
@@ -66,7 +87,11 @@ const WikiArticle = ({ title }: WikiArticleProps) => {
 
             <div className="space-y-8 md:space-y-12">
                 {article.sections.map((section, index) => (
-                    <section key={index} className="group">
+                    <section 
+                        key={index} 
+                        className="group scroll-mt-24 transition-all duration-500"
+                        ref={el => { sectionRefs.current[section.heading] = el; }}
+                    >
                         <h2 className="text-xl md:text-2xl font-bold text-wiki-blueGlow mb-4 md:mb-6 flex items-center gap-2 group-hover:translate-x-1 transition-transform">
                             {section.heading}
                         </h2>

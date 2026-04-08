@@ -5,10 +5,12 @@ import WikiArticle from './wiki/WikiArticle';
 
 const WikiLayout = () => {
     const [activeArticle, setActiveArticle] = useState('All Haki Location');
+    const [activeSection, setActiveSection] = useState<string | null>(null);
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
-    const handleNavigate = (article: string) => {
+    const handleNavigate = (article: string, section?: string) => {
         setActiveArticle(article);
+        setActiveSection(section || null);
         setIsSidebarOpen(false); // Close on mobile navigation
     };
 
@@ -69,7 +71,7 @@ const WikiLayout = () => {
                     <div className="mb-2 md:mb-4">
                         <span className="text-[10px] md:text-sm text-wiki-blueGlow font-medium px-2 py-0.5 md:py-1 bg-wiki-blue/10 rounded-full">Sailor Piece</span>
                     </div>
-                    <WikiArticle title={activeArticle} />
+                    <WikiArticle title={activeArticle} activeSection={activeSection} />
                 </main>
             </div>
         </div>
