@@ -27,6 +27,7 @@ const WikiSidebar = ({ onNavigate, activeArticle, onClose }: WikiSidebarProps) =
                 'Ascension',
                 'Aura/Cosmetics',
                 'Builds',
+                'Power',
                 'Progress',
                 {
                     title: 'Puzzle Location',

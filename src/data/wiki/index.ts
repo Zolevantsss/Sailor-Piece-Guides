@@ -8,6 +8,7 @@ import { progressArticle } from './progress';
 import { puzzleArticles } from './puzzles';
 import { weaponArticles } from './weapons';
 import { generalArticles } from './general';
+import { powerArticle } from './power';
 
 export const allArticles: ArticlesRecord = {
     'All Haki Location': hakiArticle,
@@ -15,6 +16,7 @@ export const allArticles: ArticlesRecord = {
     'Ascension': ascensionArticle,
     'Aura/Cosmetics': cosmeticsArticle,
     'Builds': buildsArticle,
+    'Power': powerArticle,
     'Progress': progressArticle,
     ...puzzleArticles,
     ...weaponArticles,
