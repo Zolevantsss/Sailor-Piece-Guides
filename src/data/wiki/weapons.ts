@@ -54,7 +54,7 @@ export const weaponArticles: ArticlesRecord = {
         ),
 
     'Esdeath (General of Ice)': new WikiArticle(
-        'The Esdeath spec is a powerful ice-based combat style that offers immense crowd control and damage capabilities.'
+        'The Esdeath spec is a powerful ice-based combat style that offers immense crowd control and damage capabilities. It can be found in **Boss Island**'
     )
         .addSimpleSection(
             '📜 Unlock Requirements',
@@ -68,7 +68,7 @@ export const weaponArticles: ArticlesRecord = {
         ),
 
     'Kokushibo (Upper Moon One)': new WikiArticle(
-        'The Kokushibo spec is based on Moon Breathing, offering rapid and lethal strikes with wide area-of-effect coverage.'
+        'The Kokushibo spec is based on Moon Breathing, offering rapid and lethal strikes with wide area-of-effect coverage. It can be found in **Boss Island**'
     )
         .addSimpleSection(
             '📜 Unlock Requirements',
