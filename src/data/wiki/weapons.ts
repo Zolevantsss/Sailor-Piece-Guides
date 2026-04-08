@@ -63,7 +63,7 @@ export const weaponArticles: ArticlesRecord = {
         )
         .addSimpleSection(
             '❄️ F Move Mastery',
-            'To unlock the final mastery for Esdeath, you must meet these additional requirements:\n\n• **Clan Mastery:** Obtain the **Frostbane Clan** through rerolls.\n• **Material Grind:** Collect **85 Frost Relics**.',
+            'To unlock the final mastery for Esdeath, you must meet these additional requirements:\n\n• **Clan Mastery:** Obtain the **Frostbane Clan** through rerolls.\n• **Material Grind:** Collect **Frostbane Clan**, **2 Ice Core**, **10 Frozen Brand,**85 Frost Relics**.',
             esdeathMastery
         ),
 
