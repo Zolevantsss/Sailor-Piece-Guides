@@ -7,11 +7,13 @@ const WikiLayout = () => {
     const [activeArticle, setActiveArticle] = useState('All Haki Location');
     const [activeSection, setActiveSection] = useState<string | null>(null);
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+    const [isMobileSearchOpen, setIsMobileSearchOpen] = useState(false);
 
     const handleNavigate = (article: string, section?: string) => {
         setActiveArticle(article);
         setActiveSection(section || null);
         setIsSidebarOpen(false); // Close on mobile navigation
+        setIsMobileSearchOpen(false); // Close search on navigation
     };
 
     return (
@@ -55,15 +57,37 @@ const WikiLayout = () => {
                         </nav>
                     </div>
 
-                    <div className="flex items-center gap-2 md:gap-4 shrink-0">
+                    <div className="flex items-center gap-2 md:gap-4 shrink-0 overflow-hidden">
+                        {/* Desktop Search */}
                         <div className="hidden sm:block">
                             <WikiSearch onNavigate={handleNavigate} />
                         </div>
-                        <button className="sm:hidden text-wiki-textMuted p-2">
-                            <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                            </svg>
-                        </button>
+
+                        {/* Mobile Search Overlay */}
+                        {isMobileSearchOpen ? (
+                            <div className="absolute inset-0 bg-wiki-card z-[60] flex items-center px-4 animate-in fade-in slide-in-from-right-2 duration-200">
+                                <div className="flex-1">
+                                    <WikiSearch onNavigate={handleNavigate} />
+                                </div>
+                                <button 
+                                    onClick={() => setIsMobileSearchOpen(false)}
+                                    className="ml-2 text-wiki-textMuted hover:text-wiki-blueGlow p-2"
+                                >
+                                    <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                                    </svg>
+                                </button>
+                            </div>
+                        ) : (
+                            <button 
+                                onClick={() => setIsMobileSearchOpen(true)}
+                                className="sm:hidden text-wiki-textMuted hover:text-wiki-blueGlow p-2 transition-colors"
+                            >
+                                <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                                </svg>
+                            </button>
+                        )}
                     </div>
                 </header>
 
@@ -71,7 +95,11 @@ const WikiLayout = () => {
                     <div className="mb-2 md:mb-4">
                         <span className="text-[10px] md:text-sm text-wiki-blueGlow font-medium px-2 py-0.5 md:py-1 bg-wiki-blue/10 rounded-full">Sailor Piece</span>
                     </div>
-                    <WikiArticle title={activeArticle} activeSection={activeSection} />
+                    <WikiArticle 
+                        title={activeArticle} 
+                        activeSection={activeSection} 
+                        onNavigate={handleNavigate}
+                    />
                 </main>
             </div>
         </div>

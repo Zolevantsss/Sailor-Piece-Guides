@@ -4,13 +4,21 @@ import { allArticles } from '../../data/wiki';
 interface WikiArticleProps {
     title: string;
     activeSection?: string | null;
+    onNavigate: (article: string, section?: string) => void;
 }
 
-const WikiArticle = ({ title, activeSection }: WikiArticleProps) => {
+const WikiArticle = ({ title, activeSection, onNavigate }: WikiArticleProps) => {
     const article = allArticles[title] || {
         content: 'This article is currently being written. Check back soon for updates.',
         sections: []
     };
+    
+    // Calculate navigation
+    const articleKeys = Object.keys(allArticles);
+    const currentIndex = articleKeys.indexOf(title);
+    const prevArticle = currentIndex > 0 ? articleKeys[currentIndex - 1] : null;
+    const nextArticle = currentIndex < articleKeys.length - 1 ? articleKeys[currentIndex + 1] : null;
+
     const sectionRefs = useRef<{ [key: string]: HTMLElement | null }>({});
 
     useEffect(() => {
@@ -112,7 +120,7 @@ const WikiArticle = ({ title, activeSection }: WikiArticleProps) => {
                                         alt={section.heading}
                                         className={`${section.imageSize === 'small' ? 'w-1/2 sm:w-1/3' :
                                             section.imageSize === 'medium' ? 'w-full sm:w-1/2' :
-                                                'w-full'
+                                                ''
                                             } h-auto object-cover hover:scale-[1.02] transition-transform duration-500`}
                                     />
                                 )}
@@ -125,19 +133,40 @@ const WikiArticle = ({ title, activeSection }: WikiArticleProps) => {
                 ))}
             </div>
 
-            <footer className="mt-12 pt-6 border-t border-wiki-border flex justify-between items-center">
-                <button className="text-wiki-textMuted hover:text-wiki-blueGlow transition-colors text-sm flex items-center gap-2">
-                    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-                    </svg>
-                    Previous
-                </button>
-                <button className="text-wiki-textMuted hover:text-wiki-blueGlow transition-colors text-sm flex items-center gap-2">
-                    Next
-                    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                    </svg>
-                </button>
+            <footer className="mt-12 pt-6 border-t border-wiki-border flex justify-between items-center gap-4">
+                {prevArticle ? (
+                    <button 
+                        onClick={() => onNavigate(prevArticle)}
+                        className="flex-1 max-w-[200px] text-left p-4 rounded-xl border border-wiki-border hover:border-wiki-blue/50 hover:bg-wiki-blue/5 transition-all group"
+                    >
+                        <div className="text-[10px] text-wiki-textMuted uppercase tracking-wider mb-1 flex items-center gap-1">
+                            <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                            </svg>
+                            Previous
+                        </div>
+                        <div className="text-sm font-semibold text-wiki-text group-hover:text-wiki-blueGlow transition-colors truncate">
+                            {prevArticle}
+                        </div>
+                    </button>
+                ) : <div className="flex-1" />}
+
+                {nextArticle ? (
+                    <button 
+                        onClick={() => onNavigate(nextArticle)}
+                        className="flex-1 max-w-[200px] text-right p-4 rounded-xl border border-wiki-border hover:border-wiki-blue/50 hover:bg-wiki-blue/5 transition-all group"
+                    >
+                        <div className="text-[10px] text-wiki-textMuted uppercase tracking-wider mb-1 flex items-center gap-1 justify-end">
+                            Next
+                            <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                            </svg>
+                        </div>
+                        <div className="text-sm font-semibold text-wiki-text group-hover:text-wiki-blueGlow transition-colors truncate">
+                            {nextArticle}
+                        </div>
+                    </button>
+                ) : <div className="flex-1" />}
             </footer>
         </article>
     );
