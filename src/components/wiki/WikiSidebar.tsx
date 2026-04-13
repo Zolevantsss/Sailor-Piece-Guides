@@ -23,6 +23,7 @@ const WikiSidebar = ({ onNavigate, activeArticle, onClose }: WikiSidebarProps) =
             title: 'Sailor Piece',
             items: [
                 'All Haki Location',
+                'All Materials',
                 'Artifacts',
                 'Ascension',
                 'Aura/Cosmetics',
