@@ -32,3 +32,37 @@
     @apply bg-wiki-border rounded-full hover:bg-wiki-textMuted/30 transition-colors;
   }
 }
+
+/* Search highlight animation */
+@keyframes highlight-pulse {
+  0%, 100% {
+    background-color: rgba(251, 191, 36, 0.3);
+    box-shadow: 0 0 4px rgba(251, 191, 36, 0.2);
+  }
+  50% {
+    background-color: rgba(251, 191, 36, 0.55);
+    box-shadow: 0 0 12px rgba(251, 191, 36, 0.4), 0 0 24px rgba(251, 191, 36, 0.15);
+  }
+}
+
+@keyframes highlight-fade-in {
+  0% {
+    opacity: 0;
+    transform: scaleX(0.8);
+  }
+  100% {
+    opacity: 1;
+    transform: scaleX(1);
+  }
+}
+
+.search-highlight-mark {
+  animation: highlight-pulse 1.5s ease-in-out infinite, highlight-fade-in 0.3s ease-out;
+  transition: all 0.3s ease;
+  display: inline;
+  border-radius: 3px;
+}
+
+.search-highlight-mark.first-highlight {
+  box-shadow: 0 0 16px rgba(251, 191, 36, 0.5), 0 0 32px rgba(251, 191, 36, 0.2);
+}

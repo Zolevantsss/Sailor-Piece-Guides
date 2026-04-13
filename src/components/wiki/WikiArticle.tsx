@@ -1,18 +1,20 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useCallback, type JSX } from 'react';
 import { allArticles } from '../../data/wiki';
 
 interface WikiArticleProps {
     title: string;
     activeSection?: string | null;
+    searchHighlight?: string | null;
+    onClearHighlight?: () => void;
     onNavigate: (article: string, section?: string) => void;
 }
 
-const WikiArticle = ({ title, activeSection, onNavigate }: WikiArticleProps) => {
+const WikiArticle = ({ title, activeSection, searchHighlight, onClearHighlight, onNavigate }: WikiArticleProps) => {
     const article = allArticles[title] || {
         content: 'This article is currently being written. Check back soon for updates.',
         sections: []
     };
-    
+
     // Calculate navigation
     const articleKeys = Object.keys(allArticles);
     const currentIndex = articleKeys.indexOf(title);
@@ -20,14 +22,16 @@ const WikiArticle = ({ title, activeSection, onNavigate }: WikiArticleProps) => 
     const nextArticle = currentIndex < articleKeys.length - 1 ? articleKeys[currentIndex + 1] : null;
 
     const sectionRefs = useRef<{ [key: string]: HTMLElement | null }>({});
+    const highlightScrolledRef = useRef(false);
 
+    // Scroll to the section heading when navigated via search
     useEffect(() => {
         if (activeSection && sectionRefs.current[activeSection]) {
-            sectionRefs.current[activeSection]?.scrollIntoView({ 
-                behavior: 'smooth', 
-                block: 'start' 
+            sectionRefs.current[activeSection]?.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
             });
-            
+
             // Add a temporary highlight effect
             const el = sectionRefs.current[activeSection];
             if (el) {
@@ -39,7 +43,75 @@ const WikiArticle = ({ title, activeSection, onNavigate }: WikiArticleProps) => 
         }
     }, [activeSection, title]);
 
+    // Scroll to the first highlighted match after render
+    useEffect(() => {
+        if (searchHighlight) {
+            highlightScrolledRef.current = false;
+            // Small delay to allow the DOM to render the highlight marks
+            const timer = setTimeout(() => {
+                const firstMark = document.querySelector('.search-highlight-mark');
+                if (firstMark) {
+                    firstMark.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }
+            }, 100);
+
+            // Auto-clear highlight after 5 seconds
+            const clearTimer = setTimeout(() => {
+                onClearHighlight?.();
+            }, 5000);
+
+            return () => {
+                clearTimeout(timer);
+                clearTimeout(clearTimer);
+            };
+        }
+    }, [searchHighlight, title, onClearHighlight]);
+
+    // Helper: wrap matching text with highlight spans
+    const highlightText = useCallback((text: string, isFirstRef: { value: boolean }) => {
+        if (!searchHighlight) return text;
+
+        const query = searchHighlight.toLowerCase();
+        const parts: (string | JSX.Element)[] = [];
+        let remaining = text;
+        let keyCounter = 0;
+
+        while (remaining.length > 0) {
+            const idx = remaining.toLowerCase().indexOf(query);
+            if (idx === -1) {
+                parts.push(remaining);
+                break;
+            }
+
+            // Text before match
+            if (idx > 0) {
+                parts.push(remaining.substring(0, idx));
+            }
+
+            // The match itself
+            const matchedText = remaining.substring(idx, idx + query.length);
+            const isFirst = isFirstRef.value;
+            isFirstRef.value = false;
+
+            parts.push(
+                <mark
+                    key={`hl-${keyCounter++}`}
+                    className={`search-highlight-mark bg-amber-400/30 text-amber-200 rounded-sm px-0.5 py-0.5 border-b-2 border-amber-400 animate-highlight-pulse ${isFirst ? 'first-highlight' : ''}`}
+                >
+                    {matchedText}
+                </mark>
+            );
+
+            remaining = remaining.substring(idx + query.length);
+        }
+
+        return parts.length > 0 ? parts : text;
+    }, [searchHighlight]);
+
     const renderFormattedText = (text: string) => {
+        // Track whether we've found the first highlight match (for scroll targeting)
+        const isFirstRef = { value: true };
+
         return text.split('\n').map((line, lineIdx) => {
             // Handle bullet points
             const isBullet = line.trim().startsWith('•');
@@ -49,20 +121,22 @@ const WikiArticle = ({ title, activeSection, onNavigate }: WikiArticleProps) => 
             const parts = cleanLine.split(/(\*\*.*?\*\*|\*[^*].*?\*)/g);
             const formattedLine = parts.map((part, partIdx) => {
                 if (part.startsWith('**') && part.endsWith('**')) {
+                    const innerText = part.slice(2, -2);
                     return (
                         <strong key={partIdx} className="text-white font-bold px-1.5 py-0.5 bg-white/5 rounded mx-0.5 border border-white/10 ring-1 ring-white/5 shadow-sm">
-                            {part.slice(2, -2)}
+                            {highlightText(innerText, isFirstRef)}
                         </strong>
                     );
                 }
                 if (part.startsWith('*') && part.endsWith('*')) {
+                    const innerText = part.slice(1, -1);
                     return (
                         <em key={partIdx} className="text-wiki-blueLight/90 italic">
-                            {part.slice(1, -1)}
+                            {highlightText(innerText, isFirstRef)}
                         </em>
                     );
                 }
-                return part;
+                return <span key={partIdx}>{highlightText(part, isFirstRef)}</span>;
             });
 
             if (isBullet) {
@@ -95,8 +169,8 @@ const WikiArticle = ({ title, activeSection, onNavigate }: WikiArticleProps) => 
 
             <div className="space-y-8 md:space-y-12">
                 {article.sections.map((section, index) => (
-                    <section 
-                        key={index} 
+                    <section
+                        key={index}
                         className="group scroll-mt-24 transition-all duration-500"
                         ref={el => { sectionRefs.current[section.heading] = el; }}
                     >
@@ -135,7 +209,7 @@ const WikiArticle = ({ title, activeSection, onNavigate }: WikiArticleProps) => 
 
             <footer className="mt-12 pt-6 border-t border-wiki-border flex justify-between items-center gap-4">
                 {prevArticle ? (
-                    <button 
+                    <button
                         onClick={() => onNavigate(prevArticle)}
                         className="flex-1 max-w-[200px] text-left p-4 rounded-xl border border-wiki-border hover:border-wiki-blue/50 hover:bg-wiki-blue/5 transition-all group"
                     >
@@ -152,7 +226,7 @@ const WikiArticle = ({ title, activeSection, onNavigate }: WikiArticleProps) => 
                 ) : <div className="flex-1" />}
 
                 {nextArticle ? (
-                    <button 
+                    <button
                         onClick={() => onNavigate(nextArticle)}
                         className="flex-1 max-w-[200px] text-right p-4 rounded-xl border border-wiki-border hover:border-wiki-blue/50 hover:bg-wiki-blue/5 transition-all group"
                     >
