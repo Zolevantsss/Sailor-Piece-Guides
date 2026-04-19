@@ -59,6 +59,12 @@ const WikiSidebar = ({ onNavigate, activeArticle, onClose }: WikiSidebarProps) =
             ],
         },
         {
+            title: 'Easter Event',
+            items: [
+                'Easter Event 🥚',
+            ],
+        },
+        {
             title: 'Guide to Sea 2',
             items: [
                 'All Location Guide Ancient Fragment',
