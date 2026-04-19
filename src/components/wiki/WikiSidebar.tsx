@@ -67,7 +67,7 @@ const WikiSidebar = ({ onNavigate, activeArticle, onClose }: WikiSidebarProps) =
         }
     ];
 
-    const filteredCategories = categories.filter(category => {
+    const filteredCategories = categories.filter(_category => {
         if (currentSea === 'Sea 1') return true; // Sea 1 contains everything for now
         if (currentSea === 'Sea 2') return false; // Sea 2 is blank for now
         return true;
