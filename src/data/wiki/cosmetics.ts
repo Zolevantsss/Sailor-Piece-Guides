@@ -1,8 +1,8 @@
 import { WikiArticle } from '../../types/wiki';
-import auraChestImg from '../../assets/auracosme/aurachest.png';
-import auraRarityImg from '../../assets/auracosme/aurararity.png';
-import cosmeCrateImg from '../../assets/auracosme/cosmecrate.png';
-import cosmeRarityImg from '../../assets/auracosme/cosmerarity.png';
+import auraChestImg from '../../assets/Sea 1/auracosme/aurachest.png';
+import auraRarityImg from '../../assets/Sea 1/auracosme/aurararity.png';
+import cosmeCrateImg from '../../assets/Sea 1/auracosme/cosmecrate.png';
+import cosmeRarityImg from '../../assets/Sea 1/auracosme/cosmerarity.png';
 
 export const cosmeticsArticle = new WikiArticle(
     'Auras and Cosmetics are rare drops that provide both stunning visual effects and significant stat boosts to aid in your character progression.'

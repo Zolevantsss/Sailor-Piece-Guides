@@ -1,7 +1,7 @@
 import { WikiArticle } from '../../types/wiki';
-import obshaki from '../../assets/hakis/obshaki.png';
-import armhaki from '../../assets/hakis/armhaki.png';
-import conqhaki from '../../assets/hakis/conqhaki.png';
+import obshaki from '../../assets/Sea 1/hakis/obshaki.png';
+import armhaki from '../../assets/Sea 1/hakis/armhaki.png';
+import conqhaki from '../../assets/Sea 1/hakis/conqhaki.png';
 
 export const hakiArticle = new WikiArticle(
     'Your definitive guide to finding Haki across the seas. Each Haki type provides significant combat advantages and is required for character progression.'

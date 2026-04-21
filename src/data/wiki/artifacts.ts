@@ -1,8 +1,8 @@
 import { WikiArticle } from '../../types/wiki';
-import artInvImg from '../../assets/artifacts/artifactinv.png';
-import artUpgImg from '../../assets/artifacts/artifactupg.png';
-import artDelImg from '../../assets/artifacts/artifactdel.png';
-import artifactsMainImg from '../../assets/artifacts/artifacts.png';
+import artInvImg from '../../assets/Sea 1/artifacts/artifactinv.png';
+import artUpgImg from '../../assets/Sea 1/artifacts/artifactupg.png';
+import artDelImg from '../../assets/Sea 1/artifacts/artifactdel.png';
+import artifactsMainImg from '../../assets/Sea 1/artifacts/artifacts.png';
 
 export const artifactsArticle = new WikiArticle(
     'Artifacts are powerful equipment pieces dropped by bosses, mini-bosses, and mobs. Note that they only appear as drops after you have interacted with the **Artifacts NPC** on **Snow Island**.'

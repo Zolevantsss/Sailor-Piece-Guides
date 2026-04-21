@@ -194,7 +194,7 @@ const WikiArticle = ({ title, activeSection, searchHighlight, onClearHighlight, 
                                         alt={section.heading}
                                         className={`${section.imageSize === 'small' ? 'w-1/2 sm:w-1/3' :
                                             section.imageSize === 'medium' ? 'w-full sm:w-1/2' :
-                                                ''
+                                                'w-full'
                                             } h-auto object-cover hover:scale-[1.02] transition-transform duration-500`}
                                     />
                                 )}

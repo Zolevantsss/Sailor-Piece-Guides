@@ -1,5 +1,5 @@
 import { WikiArticle } from '../../types/wiki';
-import ascensionImg from '../../assets/ascension/ascension.png';
+import ascensionImg from '../../assets/Sea 1/ascension/ascension.png';
 
 export const ascensionArticle = new WikiArticle(
     'You can find the Ascension NPC on Sailor Island. When you enter inside, on the left side you will see Killua.\n\nPer Ascension, your Luck, Cooldown Reduction, Gem Gain, and Money Gain all increase by the same percentage.'

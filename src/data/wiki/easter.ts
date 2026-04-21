@@ -1,12 +1,12 @@
 import { WikiArticle } from '../../types/wiki';
 
-import starterImg from '../../assets/easterevent/starter.png';
-import jungleImg from '../../assets/easterevent/jungle.png';
-import desertImg from '../../assets/easterevent/desert.png';
-import snowImg from '../../assets/easterevent/snow.png';
-import sailorImg from '../../assets/easterevent/sailor.png';
-import shibuyaImg from '../../assets/easterevent/shibuya.png';
-import lawlessImg from '../../assets/easterevent/lawless.png';
+import starterImg from '../../assets/Sea 1/easterevent/starter.png';
+import jungleImg from '../../assets/Sea 1/easterevent/jungle.png';
+import desertImg from '../../assets/Sea 1/easterevent/desert.png';
+import snowImg from '../../assets/Sea 1/easterevent/snow.png';
+import sailorImg from '../../assets/Sea 1/easterevent/sailor.png';
+import shibuyaImg from '../../assets/Sea 1/easterevent/shibuya.png';
+import lawlessImg from '../../assets/Sea 1/easterevent/lawless.png';
 
 export const easterArticle = new WikiArticle(
     'THE EASTER EGG HUNT QUEST is a special event where you must find eggs hidden across various islands. There are two types of egg spawns: Guaranteed and Timed.'

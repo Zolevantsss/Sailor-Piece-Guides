@@ -1,26 +1,26 @@
 import { WikiArticle } from '../../types/wiki';
 
 // Import Ancient Fragment images
-import starter1 from '../../assets/ancientfragment/starter1.png';
-import starter2 from '../../assets/ancientfragment/starter2.png';
-import desert1 from '../../assets/ancientfragment/desert1.png';
-import desert2 from '../../assets/ancientfragment/desert2.png';
-import snow from '../../assets/ancientfragment/snow.png';
-import shibuya1 from '../../assets/ancientfragment/shibuya1.png';
-import shibuya2 from '../../assets/ancientfragment/shibuya2.png';
-import hollow1 from '../../assets/ancientfragment/hollow1.png';
-import hollow2 from '../../assets/ancientfragment/hollow2.png';
-import shinjuku1 from '../../assets/ancientfragment/shinjuku.png';
-import shinjuku2 from '../../assets/ancientfragment/shinjuku2.png';
-import slime1 from '../../assets/ancientfragment/slime1.png';
-import slime2 from '../../assets/ancientfragment/slime2.png';
-import academy1 from '../../assets/ancientfragment/academy1.png';
-import academy2 from '../../assets/ancientfragment/academy2.png';
-import judgement1 from '../../assets/ancientfragment/judgement1.png';
-import judgement2 from '../../assets/ancientfragment/judgement2.png';
-import ninja from '../../assets/ancientfragment/ninja.png';
-import lawless1 from '../../assets/ancientfragment/lawless1.png';
-import lawless2 from '../../assets/ancientfragment/lawless2.png';
+import starter1 from '../../assets/Sea 1/ancientfragment/starter1.png';
+import starter2 from '../../assets/Sea 1/ancientfragment/starter2.png';
+import desert1 from '../../assets/Sea 1/ancientfragment/desert1.png';
+import desert2 from '../../assets/Sea 1/ancientfragment/desert2.png';
+import snow from '../../assets/Sea 1/ancientfragment/snow.png';
+import shibuya1 from '../../assets/Sea 1/ancientfragment/shibuya1.png';
+import shibuya2 from '../../assets/Sea 1/ancientfragment/shibuya2.png';
+import hollow1 from '../../assets/Sea 1/ancientfragment/hollow1.png';
+import hollow2 from '../../assets/Sea 1/ancientfragment/hollow2.png';
+import shinjuku1 from '../../assets/Sea 1/ancientfragment/shinjuku.png';
+import shinjuku2 from '../../assets/Sea 1/ancientfragment/shinjuku2.png';
+import slime1 from '../../assets/Sea 1/ancientfragment/slime1.png';
+import slime2 from '../../assets/Sea 1/ancientfragment/slime2.png';
+import academy1 from '../../assets/Sea 1/ancientfragment/academy1.png';
+import academy2 from '../../assets/Sea 1/ancientfragment/academy2.png';
+import judgement1 from '../../assets/Sea 1/ancientfragment/judgement1.png';
+import judgement2 from '../../assets/Sea 1/ancientfragment/judgement2.png';
+import ninja from '../../assets/Sea 1/ancientfragment/ninja.png';
+import lawless1 from '../../assets/Sea 1/ancientfragment/lawless1.png';
+import lawless2 from '../../assets/Sea 1/ancientfragment/lawless2.png';
 
 export const ancientFragmentArticle = new WikiArticle(
     'Ancient Fragments are essential items for progression in Sea 2. You need **2 Ancient Fragments** to proceed. Note that they **randomly spawn** across the maps shown below.'

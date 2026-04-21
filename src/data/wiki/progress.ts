@@ -1,19 +1,19 @@
 import { WikiArticle } from '../../types/wiki';
-import getIchigoImg from '../../assets/progress/getichigo.png';
-import getRaceImg from '../../assets/progress/getrace.png';
-import getObsImg from '../../assets/progress/getobs.png';
-import getArmImg from '../../assets/progress/getarm.png';
-import getGilgaImg from '../../assets/progress/getgilga.png';
-import getGilgaTitleImg from '../../assets/progress/getgilgatitle.png';
-import gilgaRequireImg from '../../assets/progress/gilgarequire.png';
-import aizenv1npcImg from '../../assets/progress/aizenv1npc.png';
-import anosnpcImg from '../../assets/progress/anosnpc.png';
-import demonitequestImg from '../../assets/progress/demonitequest.png';
-import demonfrag1Img from '../../assets/progress/demonfrag1.png';
-import demonfrag2Img from '../../assets/progress/demonfrag2.png';
-import aizenv2buyImg from '../../assets/progress/aizenv2buy.png';
-import aizenv2summonImg from '../../assets/progress/aizenv2summon.png';
-import aizenv2FskillImg from '../../assets/progress/aizenv2Fskill.png';
+import getIchigoImg from '../../assets/Sea 1/progress/getichigo.png';
+import getRaceImg from '../../assets/Sea 1/progress/getrace.png';
+import getObsImg from '../../assets/Sea 1/progress/getobs.png';
+import getArmImg from '../../assets/Sea 1/progress/getarm.png';
+import getGilgaImg from '../../assets/Sea 1/progress/getgilga.png';
+import getGilgaTitleImg from '../../assets/Sea 1/progress/getgilgatitle.png';
+import gilgaRequireImg from '../../assets/Sea 1/progress/gilgarequire.png';
+import aizenv1npcImg from '../../assets/Sea 1/progress/aizenv1npc.png';
+import anosnpcImg from '../../assets/Sea 1/progress/anosnpc.png';
+import demonitequestImg from '../../assets/Sea 1/progress/demonitequest.png';
+import demonfrag1Img from '../../assets/Sea 1/progress/demonfrag1.png';
+import demonfrag2Img from '../../assets/Sea 1/progress/demonfrag2.png';
+import aizenv2buyImg from '../../assets/Sea 1/progress/aizenv2buy.png';
+import aizenv2summonImg from '../../assets/Sea 1/progress/aizenv2summon.png';
+import aizenv2FskillImg from '../../assets/Sea 1/progress/aizenv2Fskill.png';
 
 export const progressArticle = new WikiArticle(
     'Complete progression guide through Sailor Piece - from beginner to endgame specs. Follow this path to maximize your efficiency and power.'

@@ -55,7 +55,18 @@ const WikiSidebar = ({ onNavigate, activeArticle, onClose }: WikiSidebarProps) =
                 'Skill Tree',
                 'Spec Passive',
                 'Titles',
-                'Tower of Infinity'
+                'Tower of Infinity',
+                'Relics',
+                'Bloodlines',
+                'Seabeast/Kraken',
+                {
+                    title: 'Weapons (Sea 2)',
+                    subItems: [
+                        'The World',
+                        'Dragon Goddess',
+                        'Cosmic Being'
+                    ]
+                }
             ],
         },
         {
@@ -73,11 +84,63 @@ const WikiSidebar = ({ onNavigate, activeArticle, onClose }: WikiSidebarProps) =
         }
     ];
 
-    const filteredCategories = categories.filter(_category => {
-        if (currentSea === 'Sea 1') return true; // Sea 1 contains everything for now
-        if (currentSea === 'Sea 2') return false; // Sea 2 is blank for now
+    const filteredCategories = categories.map(category => {
+        // Map items based on current sea
+        const mappedItems = category.items.map(item => {
+            if (typeof item === 'string') {
+                if (item === 'All Materials' && currentSea === 'Sea 2') {
+                    return 'All Materials Sea 2';
+                }
+                return item;
+            }
+            return item;
+        });
+
+        return {
+            ...category,
+            items: mappedItems
+        };
+    }).filter(category => {
+        if (currentSea === 'Sea 1') {
+            // In Sea 1, hide Sea 2 specific items
+            category.items = category.items.filter(item => {
+                if (typeof item === 'string') {
+                    return item !== 'Relics' && item !== 'Bloodlines' && item !== 'All Materials Sea 2';
+                }
+                return item.title !== 'Weapons (Sea 2)';
+            });
+            return true;
+        }
+        
+        // For Sea 2, we only want specific content
+        if (currentSea === 'Sea 2') {
+            // For "Sailor Piece" category, keep only the Sea 2 items
+            if (category.title === 'Sailor Piece') {
+                const sea2Items = ['All Materials Sea 2', 'Relics', 'Bloodlines', 'Seabeast/Kraken'];
+                category.items = category.items.filter(item => {
+                    if (typeof item === 'string') {
+                        return sea2Items.includes(item);
+                    }
+                    return item.title === 'Weapons (Sea 2)';
+                });
+                return category.items.length > 0;
+            }
+            
+            // Remove everything else
+            return false;
+        }
+        
         return true;
     });
+
+    const handleSeaChange = (sea: 'Sea 1' | 'Sea 2') => {
+        setCurrentSea(sea);
+        if (activeArticle === 'All Materials' && sea === 'Sea 2') {
+            onNavigate('All Materials Sea 2');
+        } else if (activeArticle === 'All Materials Sea 2' && sea === 'Sea 1') {
+            onNavigate('All Materials');
+        }
+    };
 
     return (
         <aside className="w-64 bg-wiki-dark border-r border-wiki-border flex flex-col h-full shrink-0">
@@ -110,7 +173,7 @@ const WikiSidebar = ({ onNavigate, activeArticle, onClose }: WikiSidebarProps) =
             <div className="px-4 py-4 border-b border-wiki-border/50 bg-wiki-dark/50">
                 <div className="flex bg-wiki-darkHover p-1 rounded-xl border border-wiki-border/50 shadow-inner">
                     <button 
-                        onClick={() => setCurrentSea('Sea 1')}
+                        onClick={() => handleSeaChange('Sea 1')}
                         className={`flex-1 flex items-center justify-center py-2 rounded-lg text-xs font-bold transition-all duration-300 ${
                             currentSea === 'Sea 1' 
                                 ? 'bg-wiki-blue text-white shadow-lg shadow-wiki-blue/20' 
@@ -120,7 +183,7 @@ const WikiSidebar = ({ onNavigate, activeArticle, onClose }: WikiSidebarProps) =
                         SEA 1
                     </button>
                     <button 
-                        onClick={() => setCurrentSea('Sea 2')}
+                        onClick={() => handleSeaChange('Sea 2')}
                         className={`flex-1 flex items-center justify-center py-2 rounded-lg text-xs font-bold transition-all duration-300 ${
                             currentSea === 'Sea 2' 
                                 ? 'bg-wiki-blue text-white shadow-lg shadow-wiki-blue/20' 
@@ -151,7 +214,7 @@ const WikiSidebar = ({ onNavigate, activeArticle, onClose }: WikiSidebarProps) =
                                                         : 'text-wiki-text hover:bg-wiki-darkHover hover:text-wiki-blueGlow'
                                                         }`}
                                                 >
-                                                    {item}
+                                                    {item === 'All Materials Sea 2' ? 'All Materials' : item}
                                                 </button>
                                             </li>
                                         );

@@ -1,20 +1,20 @@
 import { WikiArticle } from '../../types/wiki';
 import type { ArticlesRecord } from '../../types/wiki';
-import traitsImg from '../../assets/traits/traits.png';
-import clanImg from '../../assets/traits/clan.png';
-import raceImg from '../../assets/traits/race.png';
-import storeImg from '../../assets/traits/store.png';
-import runeloc from '../../assets/Runes/runeloc.png';
-import runeslist from '../../assets/Runes/runeslist.png';
-import secretrune1 from '../../assets/Runes/secretrune1.png';
-import secretrune2 from '../../assets/Runes/secretrune2.png';
-import skillTreeImg from '../../assets/skilltree/skilltree.png';
-import skillTreeLocImg from '../../assets/skilltree/skilltreeloc.png';
-import specPassiveImg from '../../assets/spec/specpassive.png';
-import titleImg from '../../assets/title/title.png';
-import towerImg from '../../assets/infinitetower/infinitetower.png';
-import towerUI from '../../assets/infinitetower/towerUI.png';
-import towerKey from '../../assets/infinitetower/towerkey.png';
+import traitsImg from '../../assets/Sea 1/traits/traits.png';
+import clanImg from '../../assets/Sea 1/traits/clan.png';
+import raceImg from '../../assets/Sea 1/traits/race.png';
+import storeImg from '../../assets/Sea 1/traits/store.png';
+import runeloc from '../../assets/Sea 1/Runes/runeloc.png';
+import runeslist from '../../assets/Sea 1/Runes/runeslist.png';
+import secretrune1 from '../../assets/Sea 1/Runes/secretrune1.png';
+import secretrune2 from '../../assets/Sea 1/Runes/secretrune2.png';
+import skillTreeImg from '../../assets/Sea 1/skilltree/skilltree.png';
+import skillTreeLocImg from '../../assets/Sea 1/skilltree/skilltreeloc.png';
+import specPassiveImg from '../../assets/Sea 1/spec/specpassive.png';
+import titleImg from '../../assets/Sea 1/title/title.png';
+import towerImg from '../../assets/Sea 1/infinitetower/infinitetower.png';
+import towerUI from '../../assets/Sea 1/infinitetower/towerUI.png';
+import towerKey from '../../assets/Sea 1/infinitetower/towerkey.png';
 
 export const generalArticles: ArticlesRecord = {
     'Rerolls': new WikiArticle(

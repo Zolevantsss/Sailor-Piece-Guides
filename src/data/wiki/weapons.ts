@@ -1,16 +1,16 @@
 import { WikiArticle } from '../../types/wiki';
 import type { ArticlesRecord } from '../../types/wiki';
-import atomicBoss from '../../assets/atomicweapon/atomicboss.png';
-import atomicNpc from '../../assets/atomicweapon/atomicnpc.png';
-import abyssalEmpressImg from '../../assets/abyssalempress/abyssalempress.png';
-import abyssalEmpressUI from '../../assets/abyssalempress/abyssalempressUI.png';
-import esdeathNpc from '../../assets/esdeathweapon/esdeathnpc.png';
-import esdeathMastery from '../../assets/esdeathweapon/esdeathmastery.png';
-import kokuNpc from '../../assets/kokushiboweapon/kokunpc.png';
-import kokuMastery from '../../assets/kokushiboweapon/kokumastery.png';
-import madaraNpc from '../../assets/madaraweapon/madaranpc.png';
-import madaraMastery from '../../assets/madaraweapon/madaramastery.png';
-import madaraSpawn from '../../assets/madaraweapon/madaraspawn.png';
+import atomicBoss from '../../assets/Sea 1/atomicweapon/atomicboss.png';
+import atomicNpc from '../../assets/Sea 1/atomicweapon/atomicnpc.png';
+import abyssalEmpressImg from '../../assets/Sea 1/abyssalempress/abyssalempress.png';
+import abyssalEmpressUI from '../../assets/Sea 1/abyssalempress/abyssalempressUI.png';
+import esdeathNpc from '../../assets/Sea 1/esdeathweapon/esdeathnpc.png';
+import esdeathMastery from '../../assets/Sea 1/esdeathweapon/esdeathmastery.png';
+import kokuNpc from '../../assets/Sea 1/kokushiboweapon/kokunpc.png';
+import kokuMastery from '../../assets/Sea 1/kokushiboweapon/kokumastery.png';
+import madaraNpc from '../../assets/Sea 1/madaraweapon/madaranpc.png';
+import madaraMastery from '../../assets/Sea 1/madaraweapon/madaramastery.png';
+import madaraSpawn from '../../assets/Sea 1/madaraweapon/madaraspawn.png';
 
 export const weaponArticles: ArticlesRecord = {
     'Atomic Sword': new WikiArticle(
